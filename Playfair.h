@@ -18,7 +18,7 @@ class Playfair: public CipherInterface
 {
 	public:
     Playfair() { }
-    //Playfair(bool debug = false) : _debug(debug) { }
+    Playfair(bool debug) : _debug(debug) { }
     ~Playfair() { }
 		virtual bool setKey(const string&);
 		virtual string encrypt(const string&);

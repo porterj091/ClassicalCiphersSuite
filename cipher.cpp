@@ -7,6 +7,7 @@
 #include "CipherInterface.h"
 #include "Caesar.h"
 #include "Playfair.h"
+#include "Vigenere.h"
 
 
 using namespace std;
@@ -20,7 +21,7 @@ void usage()
       "PLF: Playfair",
       "RFC: Railfence",
       "RTS: Row Transposition",
-      "VIG: Vigenre",
+      "VIG: Vigenere",
       "CES: Caesar");
 }
 
@@ -61,7 +62,9 @@ int main(const int argc, const char *argv[])
   }
   else if (strncmp(argv[1], "VIG", 4) == 0)
   {
-    //cipher = new Vigenre();
+    cipher = new Vigenere();
+    if(!cipher->setKey(key))
+      return 1;
   }
   else
   {
@@ -72,7 +75,7 @@ int main(const int argc, const char *argv[])
 
   if(strncmp(argv[3], "ENC", 4) == 0)
   {
-    cout << cipher->encrypt("bolloon") << endl;
+    cout << cipher->encrypt("helloworld") << endl;
   }
   else if(strncmp(argv[3], "DEC", 4) == 0)
   {
