@@ -1,0 +1,6 @@
+sample
+*.h.gch
+*.txt
+*.o
+*.out
+cipher
