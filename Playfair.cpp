@@ -52,8 +52,6 @@ bool Playfair::setKey(const string& key)
   return true;
 }
 
-// Will create the playfair matrix used for encryption and decryption
-// @return {vector<vector<string> >}
 vector<vector<string> > Playfair::createMatrix()
 {
   // Init our container to hold matrix
@@ -252,9 +250,6 @@ vector<string> Playfair::createGroups(const string& text)
   return groups;
 }
 
-// Will find the corrdinate location of a character
-// @param {string}
-// @return pair<int,int> both first and second will be -1 if could not find
 pair<int, int> Playfair::findLocation(string& c, bool left)
 {
   int index = (left) ? 0 : 1;

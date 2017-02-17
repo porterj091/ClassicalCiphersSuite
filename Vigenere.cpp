@@ -29,8 +29,13 @@ string Vigenere::encrypt(const string& plaintext)
       continue;
     }
 
+    // Make the characters uppercase to see results better
     char c = toupper(plaintext[i]);
-    cipher_text += (c + _key[key_index]) % 26;
+    cipher_text += (c + _key[key_index]) % 26 + 'A';
+    if(_debug)
+    {
+      cout << (c + _key[key_index]) % 26 + 'A' << endl;
+    }
     key_index = (key_index + 1) % _key.length();
 
   }
@@ -50,10 +55,16 @@ string Vigenere::decrypt(const string& ciphertext)
       continue;
     }
 
+    // Make the characters uppercase to see results better
     char c = toupper(ciphertext[i]);
-    plain_text += (c + _key[key_index]) % 26;
+    plain_text += (c - _key[key_index]  + 26) % 26 + 'A';
+
+    if(_debug)
+    {
+      cout << (c - _key[key_index] + 26) % 26 + 'A' << endl;
+    }
     key_index = (key_index + 1) % _key.length();
 
   }
-  return "";
+  return plain_text;
 }

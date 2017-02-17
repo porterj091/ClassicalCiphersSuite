@@ -79,7 +79,7 @@ int main(const int argc, const char *argv[])
   }
   else if(strncmp(argv[3], "DEC", 4) == 0)
   {
-    cout << cipher->decrypt("hasupmna") << endl;
+    cout << cipher->decrypt("ZINFFEHPDH") << endl;
   }
   else
   {

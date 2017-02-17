@@ -1,11 +1,5 @@
 #include "Caesar.h"
-#include <stdexcept>
-#include <iostream>
-#include <ctype.h>
-#include <vector>   /* For vectors */
-#include <string>   /* For C++ strings */
-#include <stdio.h>  /* For standard I/O */
-#include <stdlib.h> /* For miscellenous C functions */
+
 
 bool Caesar::setKey(const string& key)
 {
