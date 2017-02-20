@@ -26,7 +26,15 @@ class Railfence : public CipherInterface
     // Destructor
     ~Railfence(){ }
 		virtual bool setKey(const string&);
+
+		// Encrypt the plaintext
+		// @param {const string&}
+		// @return {string} will return the cipher_text
 		virtual string encrypt(const string&);
+
+		// Decrypt the cipher text
+		// @param {const string&}
+		// @return {string} will return the plain text
 		virtual string decrypt(const string&);
 
   private:
