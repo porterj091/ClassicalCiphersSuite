@@ -8,6 +8,7 @@
 #include "Caesar.h"
 #include "Playfair.h"
 #include "Vigenere.h"
+#include "Railfence.h"
 
 
 using namespace std;
@@ -52,7 +53,9 @@ int main(const int argc, const char *argv[])
   }
   else if (strncmp(argv[1], "RFC", 4) == 0)
   {
-    //cipher = new Railfence();
+    cipher = new Railfence(true);
+    if(!cipher->setKey(key))
+      return 1;
   }
   else if (strncmp(argv[1], "CES", 4) == 0)
   {
@@ -75,11 +78,11 @@ int main(const int argc, const char *argv[])
 
   if(strncmp(argv[3], "ENC", 4) == 0)
   {
-    cout << cipher->encrypt("helloworld") << endl;
+    cout << cipher->encrypt("meet me after the toga party") << endl;
   }
   else if(strncmp(argv[3], "DEC", 4) == 0)
   {
-    cout << cipher->decrypt("ZINFFEHPDH") << endl;
+    cout << cipher->decrypt("CPGPIOSFRTRHSOTFYOAYCLU") << endl;
   }
   else
   {

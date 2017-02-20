@@ -1,7 +1,7 @@
 all:	cipher
 
-cipher:	cipher.o Caesar.o Playfair.o Vigenere.o
-	g++ cipher.o Caesar.o Playfair.o Vigenere.o -o cipher
+cipher:	cipher.o Caesar.o Playfair.o Vigenere.o Railfence.o
+	g++ cipher.o Caesar.o Playfair.o Vigenere.o Railfence.o -o cipher
 
 cipher.o:	cipher.cpp
 	g++ -g -c cipher.cpp
@@ -12,8 +12,8 @@ Playfair.o:	Playfair.cpp Playfair.h CipherInterface.h
 Caesar.o:	Caesar.cpp Caesar.h CipherInterface.h
 	g++ -g -c -std=c++11 Caesar.cpp
 
-#Railfence.o:	Railfence.cpp Railfence.h CipherInterface.h
-#	g++ -g -c Railfence.cpp
+Railfence.o:	Railfence.cpp Railfence.h CipherInterface.h
+	g++ -g -c -std=c++11 Railfence.cpp
 
 Vigenere.o:	Vigenere.cpp Vigenere.h CipherInterface.h
 	g++ -g -c Vigenere.cpp
@@ -24,4 +24,4 @@ Vigenere.o:	Vigenere.cpp Vigenere.h CipherInterface.h
 
 
 clean:
-	rm -rf *.o cipher
+	rm -rf *.o *.h.gch cipher
