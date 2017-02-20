@@ -15,8 +15,15 @@ class Railfence : public CipherInterface
 {
 	public:
 
+    // Default Constructor
 		Railfence(){ }
+
+    /** Constructor used for degbugging purposes
+    * @param {bool} true for debug info false otherwise
+    */
     Railfence(bool debug) : _debug(debug) { }
+
+    // Destructor
     ~Railfence(){ }
 		virtual bool setKey(const string&);
 		virtual string encrypt(const string&);
