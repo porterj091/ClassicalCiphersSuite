@@ -53,7 +53,7 @@ int main(const int argc, const char *argv[])
   }
   else if (strncmp(argv[1], "RFC", 4) == 0)
   {
-    cipher = new Railfence(true);
+    cipher = new Railfence();
     if(!cipher->setKey(key))
       return 1;
   }
@@ -82,7 +82,7 @@ int main(const int argc, const char *argv[])
   }
   else if(strncmp(argv[3], "DEC", 4) == 0)
   {
-    cout << cipher->decrypt("CPGPIOSFRTRHSOTFYOAYCLU") << endl;
+    cout << cipher->decrypt("MTAEHOPTEMFREGAYEETTTAR") << endl;
   }
   else
   {

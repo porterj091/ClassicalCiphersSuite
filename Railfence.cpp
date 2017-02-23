@@ -77,23 +77,51 @@ string Railfence::decrypt(const string& ciphertext)
 
   unsigned int leftOver = size % _key;
 
-  int section = 1;
+  int curr = 0, next = (size / 3), vecRow = 0;
   string s;
-  for(unsigned int i = 1; i <= size; ++i)
+  for(unsigned int i = 0; i < size; ++i)
   {
     s = "";
-    s += ciphertext[i-1];
-    if(i == (size/3) * section)
-    {
-      if(_debug)
-      {
-        cout << "Section: " << section << " I: " << i  << " S: " << s << endl;
-      }
+    s += ciphertext[i];
 
-      section++;
+    if(curr < next)
+    {
+      text[vecRow].emplace_back(s);
+      curr++;
+    }
+    else
+    {
+      if(leftOver != 0)
+      {
+        text[vecRow++].emplace_back(s);
+        leftOver--;
+        curr = 0;
+      }
+      else
+      {
+        text[++vecRow].emplace_back(s);
+        curr = 1;
+      }
+    }
+  }
+
+  s = "";
+
+  int row = 0, col = 0;
+  for(unsigned int i = 0; i < size; ++i)
+  {
+    if(_debug)
+    {
+      cout << "Row: " << row << " Column: " << col << endl;
+    }
+    s += text[row][col];
+    if(++row == _key)
+    {
+      row = 0;
+      col++;
     }
   }
 
 
-  return "";
+  return s;
 }

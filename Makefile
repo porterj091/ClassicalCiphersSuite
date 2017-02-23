@@ -1,7 +1,13 @@
+OBJ = Caesar.o \
+			Playfair.o \
+			Vigenere.o \
+			RowTransposition.o \
+			Railfence.o
+
 all:	cipher
 
-cipher:	cipher.o Caesar.o Playfair.o Vigenere.o Railfence.o
-	g++ cipher.o Caesar.o Playfair.o Vigenere.o Railfence.o -o cipher
+cipher:	cipher.o $(OBJ)
+	g++ cipher.o $(OBJ) -o cipher
 
 cipher.o:	cipher.cpp
 	g++ -g -c cipher.cpp
@@ -18,9 +24,8 @@ Railfence.o:	Railfence.cpp Railfence.h CipherInterface.h
 Vigenere.o:	Vigenere.cpp Vigenere.h CipherInterface.h
 	g++ -g -c Vigenere.cpp
 
-# Uncomment this code once you add the appropriate files
-#RowTransposition.o:	RowTransposition.cpp RowTransposition.h
-#	g++ -g -c RowTransposition.cpp
+RowTransposition.o:	RowTransposition.cpp RowTransposition.h
+	g++ -g -c RowTransposition.cpp
 
 
 clean:

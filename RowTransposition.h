@@ -1,5 +1,5 @@
-#ifndef RAILFENCE_H
-#define RAILFENCE_H
+#ifndef ROWTRANSPOSITION_H
+#define ROWTRANSPOSITION_H
 
 #include <string> /* For C++ strings */
 #include <stdexcept>
@@ -11,20 +11,20 @@
 
 using namespace std;
 
-class Railfence : public CipherInterface
+class RowTransposition : public CipherInterface
 {
 	public:
 
     // Default Constructor
-		Railfence(){ }
+		RowTransposition(){ }
 
     /** Constructor used for degbugging purposes
     * @param {bool} true for debug info false otherwise
     */
-    Railfence(bool debug) : _debug(debug) { }
+    RowTransposition(bool debug) : _debug(debug) { }
 
     // Destructor
-    ~Railfence(){ }
+    ~RowTransposition(){ }
 
 		// Will set the key for the cipher
 		// @param {const string&}
