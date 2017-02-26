@@ -10,7 +10,7 @@ cipher:	cipher.o $(OBJ)
 	g++ cipher.o $(OBJ) -o cipher
 
 cipher.o:	cipher.cpp
-	g++ -g -c cipher.cpp
+	g++ -g -c -std=c++11 cipher.cpp
 
 Playfair.o:	Playfair.cpp Playfair.h CipherInterface.h
 	g++ -g -c -std=c++11 Playfair.cpp
@@ -25,7 +25,7 @@ Vigenere.o:	Vigenere.cpp Vigenere.h CipherInterface.h
 	g++ -g -c Vigenere.cpp
 
 RowTransposition.o:	RowTransposition.cpp RowTransposition.h
-	g++ -g -c RowTransposition.cpp
+	g++ -g -c -std=c++11 RowTransposition.cpp
 
 
 clean:

@@ -3,12 +3,14 @@
 #include <stdlib.h>
 #include <string>
 #include <cstring>
+#include <fstream>
 
 #include "CipherInterface.h"
 #include "Caesar.h"
 #include "Playfair.h"
 #include "Vigenere.h"
 #include "Railfence.h"
+#include "RowTransposition.h"
 
 
 using namespace std;
@@ -43,7 +45,9 @@ int main(const int argc, const char *argv[])
   // Find which cipher the user wants
   if (strncmp(argv[1], "RTS", 4) == 0)
   {
-    //cipher = new RowTransposition();
+    cipher = new RowTransposition();
+    if(!cipher->setKey(key))
+      return 1;
   }
   else if (strncmp(argv[1], "PLF", 4) == 0)
   {
@@ -76,13 +80,41 @@ int main(const int argc, const char *argv[])
     return 1;
   }
 
+  string inFile(argv[4]);
+  string outFile(argv[5]);
+
+  ifstream fIn(inFile, ios_base::in);
+  ofstream fOut(outFile, ios_base::out);
+
+  if(!fIn)
+  {
+    cerr << "Error: Could not open file - " << inFile << endl;
+    return 1;
+  }
+
+  if(!fOut)
+  {
+    cerr << "Error: Could not open file - " << outFile << endl;
+    return 1;
+  }
+
+  string cipher_input;
+
+  while(fIn.good())
+  {
+    string stuff;
+    fIn >> stuff;
+
+    cipher_input += stuff;
+  }
+
   if(strncmp(argv[3], "ENC", 4) == 0)
   {
-    cout << cipher->encrypt("meet me after the toga party") << endl;
+    fOut << cipher->encrypt(cipher_input) << endl;
   }
   else if(strncmp(argv[3], "DEC", 4) == 0)
   {
-    cout << cipher->decrypt("MTAEHOPTEMFREGAYEETTTAR") << endl;
+    fOut << cipher->decrypt(cipher_input) << endl;
   }
   else
   {

@@ -43,9 +43,11 @@ class RowTransposition : public CipherInterface
 		virtual string decrypt(const string&);
 
   private:
+		vector<vector<string> > makeMatrixEncrypt(const string&);
+		vector<vector<string> > makeMatrixDecrypt(const string&);
 
 	protected:
-    int _key;
+    string _key;
     bool _debug;
 
 };

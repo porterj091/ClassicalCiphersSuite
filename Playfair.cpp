@@ -221,22 +221,45 @@ vector<string> Playfair::createGroups(const string& text)
 
   vector<string> groups;
 
-  for(unsigned int i = 0; i < text.length() - 1; i+=2)
+  string s = "";
+  for(unsigned int i = 0; i < text.length(); ++i)
   {
-    string currGroup = "";
-    if(text[i] == text[i + 1])
-    {
-      currGroup += text[i];
-      currGroup += 'x';
-      groups.emplace_back(currGroup);
-      i--;
-    }
-    else
-    {
-      currGroup += text[i];
-      currGroup += text[i + 1];
-      groups.emplace_back(currGroup);
-    }
+    if(isalpha(text[i]))
+      s += text[i];
+  }
+
+  unsigned int size = s.length(), numChars = 0;
+  for(unsigned int i = 0; i < size - 1; i+=2)
+  {
+      string currGroup = "";
+      if(s[i] == s[i + 1])
+      {
+        currGroup += tolower(s[i]);
+        currGroup += 'x';
+        numChars++;
+        groups.emplace_back(currGroup);
+        i--;
+      }
+      else
+      {
+        currGroup += tolower(s[i]);
+        currGroup += tolower(s[i + 1]);
+        numChars += 2;
+        groups.emplace_back(currGroup);
+      }
+  }
+
+  if(_debug)
+  {
+    cout << "numChars: " << numChars << endl;
+  }
+
+  if(numChars < size)
+  {
+    string group = "";
+    group += tolower(s[size-1]);
+    group += 'x';
+    groups.emplace_back(group);
   }
 
   if(_debug)
@@ -284,6 +307,11 @@ void Playfair::moveRow(string& text, pair<int,int>& first, pair<int,int>& second
   int dir = (direction) ? 1 : -1;
   int row1 = (first.first + dir) % 5;
   int row2 = (second.first + dir) % 5;
+
+  if(row1 < 0)
+    row1 = 5 + row1;
+  if(row2 < 0)
+    row2 = 5 + row2;
 
   if(_debug)
   {
