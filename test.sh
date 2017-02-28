@@ -47,12 +47,12 @@ cat input
 
 # Test Railfence cipher
 printf "\t\t\t\t\n\nTESTING RAILFENCE\n\n"
-printf "\nRailfence Encryption: Key 3\nThis is input: "
+printf "\nRailfence Encryption: Key 4\nThis is input: "
 cat input
 ./cipher RFC 3 ENC input output
 printf "Output is: "
 cat output
-printf "\nRailfence Decryption: Key 3\nThis is input: "
+printf "\nRailfence Decryption: Key 4\nThis is input: "
 cat output
 ./cipher RFC 3 DEC output outputDec
 printf "Output is: "
@@ -62,14 +62,14 @@ cat input
 
 # Test Playfair cipher
 printf "\t\t\t\t\n\nTESTING PLAYFAIR\n\n"
-printf "\nPlayfair Encryption: Key security\nThis is input: "
+printf "\nPlayfair Encryption: Key secuurity\nThis is input: "
 cat input
-./cipher PLF security ENC input output
+./cipher PLF secuurity ENC input output
 printf "Output is: "
 cat output
-printf "\nPlayfair Decryption: Key security\nThis is input: "
+printf "\nPlayfair Decryption: Key secuurity\nThis is input: "
 cat output
-./cipher PLF security DEC output outputDec
+./cipher PLF secuurity DEC output outputDec
 printf "Output is: "
 cat outputDec
 printf "Should be similar: "

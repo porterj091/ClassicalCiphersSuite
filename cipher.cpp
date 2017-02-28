@@ -40,36 +40,37 @@ int main(const int argc, const char *argv[])
 
   CipherInterface *cipher;
 
+  string CIPHER(argv[1]);
   string key(argv[2]);
 
   // Find which cipher the user wants
-  if (strncmp(argv[1], "RTS", 4) == 0)
+  if (CIPHER == "RTS")
   {
-    cipher = new RowTransposition();
+    cipher = new RowTransposition(true);
     if(!cipher->setKey(key))
       return 1;
   }
-  else if (strncmp(argv[1], "PLF", 4) == 0)
+  else if (CIPHER == "PLF")
   {
-    cipher = new Playfair();
+    cipher = new Playfair(true);
     if(!cipher->setKey(key))
       return 1;
   }
-  else if (strncmp(argv[1], "RFC", 4) == 0)
+  else if (CIPHER == "RFC")
   {
-    cipher = new Railfence();
+    cipher = new Railfence(true);
     if(!cipher->setKey(key))
       return 1;
   }
-  else if (strncmp(argv[1], "CES", 4) == 0)
+  else if (CIPHER == "CES")
   {
     cipher = new Caesar();
     if(!cipher->setKey(key))
       return 1;
   }
-  else if (strncmp(argv[1], "VIG", 4) == 0)
+  else if (CIPHER == "VIG")
   {
-    cipher = new Vigenere();
+    cipher = new Vigenere(true);
     if(!cipher->setKey(key))
       return 1;
   }
@@ -122,7 +123,6 @@ int main(const int argc, const char *argv[])
     usage();
     return 1;
   }
-
-
+  
   return 0;
 }

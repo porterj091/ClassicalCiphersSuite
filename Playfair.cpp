@@ -18,8 +18,6 @@ bool Playfair::setKey(const string& key)
         a[105]++;
       else
         a[int(curr)]++;
-
-      newKey += curr;
     }
     else
     {
@@ -32,9 +30,9 @@ bool Playfair::setKey(const string& key)
   // Since we know we have lowercase characters we can skip to 96
   for(int i = 96; i < 256; ++i)
   {
-    if(a[i] > 1)
+    if(a[i] >= 1)
     {
-      cout << "Can't have duplicate letters in key!" << endl;
+      newKey += char(a[i]);
       return false;
     }
   }
