@@ -46,19 +46,19 @@ int main(const int argc, const char *argv[])
   // Find which cipher the user wants
   if (CIPHER == "RTS")
   {
-    cipher = new RowTransposition(true);
+    cipher = new RowTransposition();
     if(!cipher->setKey(key))
       return 1;
   }
   else if (CIPHER == "PLF")
   {
-    cipher = new Playfair(true);
+    cipher = new Playfair();
     if(!cipher->setKey(key))
       return 1;
   }
   else if (CIPHER == "RFC")
   {
-    cipher = new Railfence(true);
+    cipher = new Railfence();
     if(!cipher->setKey(key))
       return 1;
   }
@@ -70,7 +70,7 @@ int main(const int argc, const char *argv[])
   }
   else if (CIPHER == "VIG")
   {
-    cipher = new Vigenere(true);
+    cipher = new Vigenere();
     if(!cipher->setKey(key))
       return 1;
   }
@@ -123,6 +123,6 @@ int main(const int argc, const char *argv[])
     usage();
     return 1;
   }
-  
+
   return 0;
 }

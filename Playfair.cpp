@@ -14,25 +14,19 @@ bool Playfair::setKey(const string& key)
       char curr = tolower(key[i]);
 
       // I and J are treated the same way in playfair
-      if(key[i] == 'j')
+      if(curr == 'j')
         a[105]++;
       else
         a[int(curr)]++;
+
+      if(a[int(curr)] == 1)
+      {
+        newKey += curr;
+      }
     }
     else
     {
       cout << "Can't accept any Nonalpha characters for key!" << endl;
-      return false;
-    }
-  }
-
-  // Check if character was repeated twice.
-  // Since we know we have lowercase characters we can skip to 96
-  for(int i = 96; i < 256; ++i)
-  {
-    if(a[i] >= 1)
-    {
-      newKey += char(a[i]);
       return false;
     }
   }
