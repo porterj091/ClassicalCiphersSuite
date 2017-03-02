@@ -32,20 +32,13 @@ string Railfence::encrypt(const string& plaintext)
   for(unsigned int i = 0; i < size; ++i)
   {
     // Ignore any whitespace
-    if(isspace(plaintext[i]) == 0)
+    if(isspace(plaintext[i]) == 0 || isalpha(plaintext[i]) == 0)
     {
-      if(_debug)
-      {
-        cout << "Current Index: " << curr << endl;
-      }
-
       // Add to the vector
       s = "";
       s += toupper(plaintext[i]);
       text[curr].emplace_back(s);
       curr = (curr + 1) % _key;
-
-
     }
     else
     {
@@ -63,7 +56,17 @@ string Railfence::encrypt(const string& plaintext)
     for(unsigned int j = 0; j < text[i].size(); ++j)
     {
       s += text[i][j];
+      if(_debug)
+      {
+        cout << " " << text[i][j];
+      }
     }
+
+    if(_debug)
+    {
+      cout << endl;
+    }
+
   }
 
   return s;
@@ -88,6 +91,10 @@ string Railfence::decrypt(const string& ciphertext)
     {
       text[vecRow].emplace_back(s);
       curr++;
+      if(_debug)
+      {
+        cout << " " << s;
+      }
     }
     else
     {
@@ -102,6 +109,11 @@ string Railfence::decrypt(const string& ciphertext)
         text[++vecRow].emplace_back(s);
         curr = 1;
       }
+
+      if(_debug)
+      {
+        cout << endl;
+      }
     }
   }
 
@@ -110,16 +122,18 @@ string Railfence::decrypt(const string& ciphertext)
   int row = 0, col = 0;
   for(unsigned int i = 0; i < size; ++i)
   {
-    if(_debug)
-    {
-      cout << "Row: " << row << " Column: " << col << endl;
-    }
     s += text[row][col];
+
     if(++row == _key)
     {
       row = 0;
       col++;
     }
+  }
+
+  if(_debug)
+  {
+    cout << endl;
   }
 
 

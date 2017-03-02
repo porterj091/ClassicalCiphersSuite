@@ -268,6 +268,9 @@ vector<string> Playfair::createGroups(const string& text)
 pair<int, int> Playfair::findLocation(string& c, bool left)
 {
   int index = (left) ? 0 : 1;
+  if(c[index] == 'j')
+    c[index] = 'i';
+
   for(int i = 0; i < 5; ++i)
   {
     for(int j = 0; j < 5; ++j)
