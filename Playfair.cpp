@@ -321,6 +321,11 @@ void Playfair::moveColumn(string& text, pair<int,int>& first, pair<int,int>& sec
   int col1 = (first.second + dir) % 5;
   int col2 = (second.second + dir) % 5;
 
+  if(col1 < 0)
+    col1 = 5 + col1;
+  if(col2 < 0)
+    col2 = 5 + col2;
+
   if(_debug)
   {
     cout << "Moving col1 to: " << col1 << endl;
